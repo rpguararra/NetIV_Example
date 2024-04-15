@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Name="mainWindow">
     <Grid>
-        <Button Content="Populate Database" HorizontalAlignment="Left" Margin="567,334,0,0" VerticalAlignment="Top" Height="40" Width="169" Click="Button_Click"/>
-
+        <Button x:Name="Populate"  Content="Populate Database" HorizontalAlignment="Left" Margin="567,328,0,0" VerticalAlignment="Top" Height="40" Width="169" Click="Button_Click"/>
+        <DataGrid Name="API_Import" Margin="214,10,214,127"  />
+        <Button Name="Cont" Content="Continue" HorizontalAlignment="Left" Margin="567,373,0,0" VerticalAlignment="Top" Height="40" Width="169" RenderTransformOrigin="0.535,-0.131" Visibility="Hidden" Click="Button_Click_1"/>
     </Grid>
 </Window>

@@ -34,7 +34,23 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string myResult = pr.checkDB();
+            DataTable dataTable = new DataTable();
+            string myResult = pr.checkDB(ref dataTable);
+            if (myResult == "success")
+            {
+                API_Import.ItemsSource = dataTable.DefaultView;
+                Populate.Visibility = Visibility.Hidden;
+                Cont.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            mainWindow.Visibility = Visibility.Hidden;
+            NotificationForm nf = new NotificationForm();
+            nf.Owner = this;
+            nf.Show();
+
         }
     }
 
@@ -52,7 +68,7 @@ namespace WpfApp1
     
     public class DataProcess
     {
-        public string checkDB()
+        public string checkDB(ref DataTable myDT)
         {
             string dbStatus = string.Empty;
             string appDir = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
@@ -81,6 +97,21 @@ namespace WpfApp1
             {
                 //database already populated from API
                 dbStatus = "success";
+            }
+
+            if (dbStatus == "success")
+            {
+                using (SqlConnection con = new SqlConnection(conStr))
+                {
+                    using (SqlCommand cmd = new SqlCommand(cmdText, con))
+                    {
+                        DataTable dt = new DataTable();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        myDT = dt;
+                    }
+
+                }
             }
 
             return dbStatus;
