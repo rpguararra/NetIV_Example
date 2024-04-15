@@ -34,7 +34,7 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string myResult = pr.dbPopulate();
+            string myResult = pr.checkDB();
         }
     }
 
@@ -74,7 +74,13 @@ namespace WpfApp1
 
             if (count == 0)
             {
+                //Get all the records from the API
                 dbStatus = dbPopulate();
+            }
+            else
+            {
+                //database already populated from API
+                dbStatus = "success";
             }
 
             return dbStatus;
