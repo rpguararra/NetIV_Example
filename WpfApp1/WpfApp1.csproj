@@ -13,11 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Database1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Database2.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Database1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Database2_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

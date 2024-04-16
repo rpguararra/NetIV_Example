@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
+using Microsoft.Win32;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
 using System.Data;
@@ -72,11 +73,17 @@ namespace WpfApp1
         {
             string dbStatus = string.Empty;
             string appDir = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
-            appDir += "\\Database1.mdf";
+            appDir += "\\Database2.mdf";
             string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + appDir + ";Integrated Security=True";
             string cmdText = @"Select jurisdiction, lastName, firstName from Managers order by jurisdiction, lastName, firstName";
             string cmdText1 = @"Select COUNT(*) as Count from Managers";
             int count = 0;
+
+            const string subkey = "ConValue";
+            using (RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(subkey))
+            {
+                Registry.SetValue(Registry.CurrentUser + "\\" + subkey, "ConnectionStr", conStr);
+            }
 
             using (SqlConnection con = new SqlConnection(conStr))
             {
@@ -133,7 +140,7 @@ namespace WpfApp1
                 var myList = System.Text.Json.JsonSerializer.Deserialize<List<Manager>>(result);
 
                 string appDir = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
-                appDir += "\\Database1.mdf";
+                appDir += "\\Database2.mdf";
                 string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + appDir + ";Integrated Security=True";
 
                 using (SqlConnection con = new SqlConnection(conStr))
