@@ -11,8 +11,8 @@
     </Window.Resources>
     <Grid>
         <TextBox Name="title" HorizontalAlignment="Center" Height="49" TextWrapping="Wrap" Text="Notification Form" VerticalAlignment="Top" Width="800" TextAlignment="Center" FontSize="36" Background="#FF526D53"/>
-        <TextBox Name="firstName" Background="White" Margin="23,94,427,302" />
-        <TextBox Name="lastName" Background="White" Margin="449,94,38,302" />
+        <TextBox Name="firstName" Background="White" Margin="23,94,427,290" />
+        <TextBox Name="lastName" Background="White" Margin="449,94,38,290" />
         <Label Name="fn" Content="First Name" HorizontalAlignment="Left" Height="35"  VerticalAlignment="Top" Width="116" Margin="23,59,0,0" FontSize="20"/>
         <Label Name="ln" Content="Last Name" HorizontalAlignment="Left" Height="35"  VerticalAlignment="Top" Width="116" Margin="449,59,0,0" FontSize="20"/>
         <Label Content="How would you prefer to be notified?" HorizontalAlignment="Left" Height="33" Margin="23,149,0,0" VerticalAlignment="Top" Width="317" FontSize="20"/>
@@ -26,11 +26,11 @@
                 <ScaleTransform ScaleX="2" ScaleY="2"/>
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <TextBox x:Name="emailAddr" Background="White" Margin="23,217,427,184" />
-        <TextBox x:Name="phoneN" Background="White" Margin="449,217,38,184" />
-        <ComboBox Name="supervisor"  HorizontalAlignment="Center" Margin="0,296,0,0" VerticalAlignment="Top" Width="260" Height="36"/>
-        <Button Name="submit" Content="Submit" HorizontalAlignment="Center" Margin="0,359,0,0" VerticalAlignment="Top" FontSize="20" Width="142"  Background="#FF435247" Foreground="White" Height="38" Click="submit_Click"/>
-        <Label Content="Supervisor" HorizontalAlignment="Left" Margin="270,255,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.528,0.923" Height="36" Width="103"/>
+        <TextBox x:Name="emailAddr" Background="White" Margin="23,217,427,164" />
+        <TextBox x:Name="phoneN" Background="White" Margin="449,217,38,164" />
+        <ComboBox Name="supervisor"  HorizontalAlignment="Center" Margin="0,317,0,0" VerticalAlignment="Top" Width="260" Height="34" RenderTransformOrigin="0.503,1.196"/>
+        <Button Name="submit" Content="Submit" HorizontalAlignment="Center" Margin="0,371,0,0" VerticalAlignment="Top" FontSize="20" Width="142"  Background="#FF435247" Foreground="White" Height="38" Click="submit_Click" RenderTransformOrigin="0.506,1.269"/>
+        <Label Content="Supervisor" HorizontalAlignment="Left" Margin="270,275,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.556,1.566" Height="37" Width="103"/>
 
 
     </Grid>

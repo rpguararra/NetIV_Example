@@ -2,16 +2,32 @@
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Win32;
+    using System.Data;
 
     public class DB : DbContext
     {
-        const string userRoot = "HKEY_CURRENT_USER";
-        const string subkey = "ConnectionStr";
-        const string keyName = userRoot + "\\" + subkey;
 
-        public DB(string conStr) 
+        const string subkey = "ConValue";
+        private string ConStr;
+        public string ConnectionStr
         {
-            this.Database.SetConnectionString(conStr);
+            get { return ConStr; }
+            set { ConStr = value; }
+        }
+
+        public void SetConnectionString()
+        {
+            using (RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(subkey))
+            {
+                Registry.GetValue(Registry.CurrentUser + "\\" + subkey, ConnectionStr, "");
+            }
+
+        }
+
+
+        public DB() 
+        {
+            this.Database.SetConnectionString(ConnectionStr);
         }
 
         public DB(DbContextOptions<DB> options) : base(options)

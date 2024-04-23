@@ -131,7 +131,8 @@ namespace WpfApp1
         {
             string dbstatus = "success";
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://o3m5qixdng.execute-api.us-east-1.amazonaws.com/api/");
+            //client.BaseAddress = new Uri("https://o3m5qixdng.execute-api.us-east-1.amazonaws.com/api/");
+            client.BaseAddress = new Uri("http://localhost:8181/api/managers");
             HttpResponseMessage response = client.GetAsync("managers").Result;
             
            if (response.IsSuccessStatusCode)
